@@ -1,0 +1,27 @@
+﻿@using InstagramWrapper;
+@model InstagramWrapper.Model.InstagramResponse
+@{ Layout = null;}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Instagram</title>
+    <link type="text/css" rel="stylesheet" href="@Url.Content("~/Content/Style.css")" />
+    <script src="@Url.Content("~/Scripts/Custom.js")" type="text/javascript"></script>
+</head>
+<body>
+    @if (Request.IsAuthenticated)
+    {
+        foreach (var item in Model.data)
+        {
+            if (item.type == "image")
+            {
+            <img src="@item.images.standard_resolution.url" height="510" width="510" />
+            }
+        }
+    }
+    else
+    {
+        @Html.Partial("Login")
+    }
+</body>
+</html>
