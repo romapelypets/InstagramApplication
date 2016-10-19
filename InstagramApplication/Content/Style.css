@@ -1,2 +1,55 @@
-﻿body {
+﻿header a{
+	font-family: 'Lobster';
+	text-decoration: none;
+    color: #262626;
+}
+header{
+	border-bottom: 1px solid beige;
+    padding-bottom: 10px;
+}
+header a .insta-line{
+	font-family: 'Work Sans', sans-serif;
+    font-size: 60px;
+    margin: 0 10px 0 10px;
+}
+header a .insta-text{
+	margin-top: 22px;
+    font-size: 25px;
+    position: absolute;
+}
+.insta-logo{
+	width: 40px;
+    margin: 15px 0 0 15%;
+}
+.insta-img{
+    transition: 1s ease;
+}
+.insta-img:hover{
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+    transition: 1s ease;
+}
+.tab-0 .insta-img, .tab-1 .insta-img,
+.tab-2 .insta-img, .tab-3 .insta-img,
+.tab-4 .insta-img{
+    width: 240px;
+    height: 240px;
+}
+.tab-mini-0, .tab-mini-1,
+.tab-mini-2, .tab-mini-3,
+.tab-mini-4,
+.tab-small-0, .tab-small-1,
+.tab-small-2, .tab-small-3,
+.tab-small-4{
+    display: none;
+}
+.main-content{
+    background: #FAFAFA;
+    margin-top: 100px;
+    text-align: center;
+}
+.main-content img{
+    display: inline-block;
+    padding: 10px;
 }

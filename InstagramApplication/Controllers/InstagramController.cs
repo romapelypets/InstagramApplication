@@ -33,12 +33,14 @@ namespace InstagramApplication.Controllers
                     
                     FormsAuthentication.SetAuthCookie(userModel.user.access_token, true);
                     userModel.UserFeed = userEndpoints.GetUserMedia("2368860595", userModel.user.access_token);
+                    ViewBag.UserProfile = userEndpoints.GetUserSelf(userModel.user.access_token).data;
                 }
             }
             else
             {
                 userModel.user = new OuthUser();
                 userModel.user.access_token = HttpContext.User.Identity.Name;
+                ViewBag.UserProfile = userEndpoints.GetUserSelf(userModel.user.access_token).data;
                 userModel.UserFeed = userEndpoints.GetUserMedia("2368860595", userModel.user.access_token);
             }
             return View(userModel.UserFeed);

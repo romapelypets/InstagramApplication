@@ -1,15 +1,37 @@
 ﻿@using InstagramWrapper;
 @model InstagramWrapper.Model.InstagramResponse
-@{ Layout = null;}
+@{ Layout = null; }
 <!DOCTYPE html>
 <html>
 <head>
     <title>Instagram</title>
-    <link type="text/css" rel="stylesheet" href="@Url.Content("~/Content/Style.css")" />
-    <script src="@Url.Content("~/Scripts/Custom.js")" type="text/javascript"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link type="text/css" rel="stylesheet" href="@Url.Content("~/Content/reset.css")" />
+    <link type="text/css" rel="stylesheet" href="@Url.Content("~/Content/style.css")" />
+    <link type="text/css" rel="stylesheet" href="@Url.Content("~/Content/style-standard.css")" />
+    <link type="text/css" rel="stylesheet" href="@Url.Content("~/Content/style-small.css")" />
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Lobster+Two" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Lobster+Two|Work+Sans:100" rel="stylesheet">
 </head>
 <body>
-    @{var t = 0; var i = 1;}
+    <header>
+        <a href="https://www.instagram.com">
+            <img src="~/Images/instagram.svg" class="insta-logo">
+            <span class="insta-line">I</span>
+            <span class="insta-text">Instagram</span>
+        </a>
+    </header>
+    @if (Request.IsAuthenticated)
+    {
+    <div class="user-info">
+         <img src="@ViewBag.UserProfile.profile_picture" height="80" width="80" /> @ViewBag.UserProfile.full_name
+          Posts: @ViewBag.UserProfile.counts.media 
+          Followers: @ViewBag.UserProfile.counts.followed_by
+          Following: @ViewBag.UserProfile.counts.follows
+    </div>
+    }
+    <div class="main-content">
+         @{var t = 0; var i = 1; var k = 1; var c = 1;}
     <div class="tab-@(t)">
         @if (Request.IsAuthenticated)
         {
@@ -17,7 +39,7 @@
             {
                 if (item.type == "image")
                 {
-                    <img src="@item.images.standard_resolution.url" height="250" width="250" />
+                    <img src="@item.images.standard_resolution.url" class="insta-img"/>
                     if (i % 4 == 0)
                     {
                         t++;
@@ -26,11 +48,71 @@
                 }
                 i++;
             }
+            t = 0;
+            @:</div><div class="tab-mini-@(t)">
+            foreach (var item in Model.data)
+            {
+
+                if (item.type == "image")
+                {
+                    
+                    if (k <= 10)
+                    {
+
+                        <img src="@item.images.standard_resolution.url" class="insta-img"/>
+                        if (k % 2 == 0)
+                        {
+                                t++;
+                                @:</div><div class="tab-mini-@(t)">
+                        }
+                    }
+
+                }
+                k++;
+            }
+            t = 0;
+            @:</div><div class="tab-small-@(t)">
+            foreach (var item in Model.data)
+            {
+
+                if (item.type == "image")
+                {
+                    
+                    if (c <= 5)
+                    {
+
+                        <img src="@item.images.standard_resolution.url" class="insta-img"/>
+                        if (c % 1 == 0)
+                        {
+                                t++;
+                                @:</div><div class="tab-small-@(t)">
+                        }
+                    }
+
+                }
+                c++;
+            }
+
         }
-        </div>
+
         else
         {
             @Html.Partial("Login")
         }
+    </div>
+    </div>
+
+
+    <script src="@Url.Content("~/Scripts/jquery-1.10.2.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/Custom.js")" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        $(window).scroll(function () {
+            if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
+                //location.reload();
+                //alert("DSA");
+            }
+        });
+    </script> <!--all scripts must be connected at the mottom of the page-->
 </body>
 </html>

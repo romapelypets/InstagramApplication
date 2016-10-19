@@ -1,0 +1,21 @@
+﻿@media (max-width: 804px) {
+    .tab-0, .tab-1,
+    .tab-2, .tab-3,
+    .tab-4,
+    .tab-mini-0, .tab-mini-1,
+    .tab-mini-2, .tab-mini-3,
+    .tab-mini-4{
+        display: none;
+    }
+    .tab-small-0, .tab-small-1,
+    .tab-small-2, .tab-small-3,
+    .tab-small-4{
+        display: inline;
+    }
+    .tab-small-0 .insta-img, .tab-small-1 .insta-img,
+    .tab-small-2 .insta-img, .tab-small-3 .insta-img,
+    .tab-small-4 .insta-img{
+        width: 90%;
+        height: 325px;
+    }
+}

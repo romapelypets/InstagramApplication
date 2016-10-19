@@ -1,0 +1,18 @@
+﻿@media (min-width: 805px) and (max-width: 1069px) {
+    .tab-0, .tab-1,
+    .tab-2, .tab-3,
+    .tab-4{
+        display: none;
+    }
+    .tab-mini-0, .tab-mini-1,
+    .tab-mini-2, .tab-mini-3,
+    .tab-mini-4{
+        display: inline;
+    }
+    .tab-mini-0 .insta-img, .tab-mini-1 .insta-img,
+    .tab-mini-2 .insta-img, .tab-mini-3 .insta-img,
+    .tab-mini-4 .insta-img{
+        width: 350px;
+        height: 350px;
+    }
+}
